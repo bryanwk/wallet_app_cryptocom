@@ -37,8 +37,8 @@ Update config/database.yml with your PostgreSQL credentials.
 Database setup
 - `rails db:create` or `rake db:create`
 - `rails db:migrate` or `rake db:migrate`
-I have also set up some db seeds to populate the database (optional)
-- `rails db:seed` or `rake db:seed`
+- I have also set up some db seeds to populate the database (optional)
+  - `rails db:seed` or `rake db:seed`
 
 Install bundle
 - `bundle install`
