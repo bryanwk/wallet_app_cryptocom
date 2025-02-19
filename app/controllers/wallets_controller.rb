@@ -1,10 +1,9 @@
 class WalletsController < ApplicationController
-
   # GET /users/:user_id/balance
   def balance
     # Check if the user exists
     if user.nil?
-      render json: { error: 'User not found' }, status: :not_found
+      render json: { error: "User not found" }, status: :not_found
       return
     end
 

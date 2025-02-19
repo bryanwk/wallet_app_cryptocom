@@ -8,15 +8,15 @@ class WithdrawService
 
   def call
     # Check if the amount is valid
-    return { success: false, error: 'Invalid amount' } unless amount_valid?
+    return { success: false, error: "Invalid amount" } unless amount_valid?
     # Check if the balance is sufficient
-    return { success: false, error: 'Insufficient amount' } unless balance_sufficient
+    return { success: false, error: "Insufficient amount" } unless balance_sufficient
 
     transaction_record = nil
 
     ActiveRecord::Base.transaction do
       # Remove this such that wallet balance is associated with Transaction creation
-      
+
       # Lock the wallet to prevent race conditions
       # @user.wallet.lock!
       # @user.wallet.update!(balance: @user.wallet.balance - @amount)

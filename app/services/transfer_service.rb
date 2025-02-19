@@ -9,11 +9,11 @@ class TransferService
 
   def call
     # Check if the amount is valid
-    return { success: false, error: 'Invalid amount' } unless amount_valid?
+    return { success: false, error: "Invalid amount" } unless amount_valid?
     # Check if the balance is sufficient
-    return { success: false, error: 'Insufficient amount' } unless balance_sufficient
+    return { success: false, error: "Insufficient amount" } unless balance_sufficient
     # Check if the sender and receiver are the same
-    return { success: false, error: 'Sender and receiver cannot be the same' } if @user == @receiver
+    return { success: false, error: "Sender and receiver cannot be the same" } if @user == @receiver
 
     transaction_record = nil
 
@@ -34,7 +34,7 @@ class TransferService
         transaction_type: Transaction::Type::Enum::TRANSFER
       )
     end
-    { success: true, transaction: transaction_record}
+    { success: true, transaction: transaction_record }
   rescue ActiveRecord::RecordInvalid => e
     { success: false, error: e.message }
   end

@@ -9,7 +9,7 @@ class TransactionsController < ApplicationController
   def deposit
     # Check if the user exists
     if user.nil?
-      render json: { error: 'User not found' }, status: :not_found
+      render json: { error: "User not found" }, status: :not_found
       return
     end
 
@@ -21,7 +21,7 @@ class TransactionsController < ApplicationController
   def withdraw
     # Check if the user exists
     if user.nil?
-      render json: { error: 'User not found' }, status: :not_found
+      render json: { error: "User not found" }, status: :not_found
       return
     end
 
@@ -33,13 +33,13 @@ class TransactionsController < ApplicationController
   def transfer
     # Check if the user exists
     if user.nil?
-      render json: { error: 'User not found' }, status: :not_found
+      render json: { error: "User not found" }, status: :not_found
       return
     end
 
     # Check if the receiver exists
     if receiver_user.nil?
-      render json: { error: 'Receiving user not found' }, status: :not_found
+      render json: { error: "Receiving user not found" }, status: :not_found
       return
     end
 
@@ -51,7 +51,7 @@ class TransactionsController < ApplicationController
   def history
     # Check if the user exists
     if user.nil?
-      render json: { error: 'User not found' }, status: :not_found
+      render json: { error: "User not found" }, status: :not_found
       return
     end
 
@@ -112,7 +112,7 @@ class TransactionsController < ApplicationController
       # Avoid using .find() as it raises an exception if the record is not found
       User.find_by(id: receiver_user_id_from_params)
     else
-      render json: { error: 'Invalid receiver_id params' }, status: :not_found
+      render json: { error: "Invalid receiver_id params" }, status: :not_found
     end
   end
 
@@ -126,7 +126,7 @@ class TransactionsController < ApplicationController
 
   def render_response(result)
     if result[:success]
-      render json: { message: 'Operation successful', transaction: result[:transaction] }
+      render json: { message: "Operation successful", transaction: result[:transaction] }
     else
       render json: { error: result[:error] }, status: :unprocessable_entity
     end

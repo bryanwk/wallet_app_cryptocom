@@ -13,10 +13,10 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :users, only: [] do
-    get 'balance', to: 'wallets#balance'
-    post 'deposit', to: 'transactions#deposit'
-    post 'withdraw', to: 'transactions#withdraw'
-    post 'transfer', to: 'transactions#transfer'
-    get 'transactions', to: 'transactions#history'
+    get "balance", to: "wallets#balance"
+    post "deposit", to: "transactions#deposit"
+    post "withdraw", to: "transactions#withdraw"
+    post "transfer", to: "transactions#transfer"
+    get "transactions", to: "transactions#history"
   end
 end

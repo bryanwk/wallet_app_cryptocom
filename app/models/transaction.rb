@@ -4,8 +4,8 @@ class Transaction < ApplicationRecord
   after_create :invalidate_transaction_cache
   after_create :update_wallet
 
-  belongs_to :sender, class_name: 'User', optional: true
-  belongs_to :receiver, class_name: 'User', optional: true
+  belongs_to :sender, class_name: "User", optional: true
+  belongs_to :receiver, class_name: "User", optional: true
 
   validates :amount, numericality: { greater_than: 0 }
   validates :transaction_type, presence: true

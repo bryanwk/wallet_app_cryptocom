@@ -8,7 +8,7 @@ class DepositService
 
   def call
     # Check if the amount is valid
-    return { success: false, error: 'Invalid amount' } unless amount_valid?
+    return { success: false, error: "Invalid amount" } unless amount_valid?
 
     transaction_record = nil
 
