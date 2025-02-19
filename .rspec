@@ -1,0 +1,3 @@
+--require spec_helper
+spec/controllers/wallets_controller_spec.rb
+spec/controllers/transactions_controller_spec.rb
