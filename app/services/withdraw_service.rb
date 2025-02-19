@@ -15,9 +15,11 @@ class WithdrawService
     transaction_record = nil
 
     ActiveRecord::Base.transaction do
+      # Remove this such that wallet balance is associated with Transaction creation
+      
       # Lock the wallet to prevent race conditions
-      @user.wallet.lock!
-      @user.wallet.update!(balance: @user.wallet.balance - @amount)
+      # @user.wallet.lock!
+      # @user.wallet.update!(balance: @user.wallet.balance - @amount)
 
       # Create a transaction record for the withdrawal
       transaction_record = Transaction.create!(

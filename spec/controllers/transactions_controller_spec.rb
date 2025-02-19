@@ -206,9 +206,9 @@ RSpec.describe TransactionsController, type: :controller do
         before do
           # Create some transactions for the user
           create(:transaction, sender: nil, receiver: user, amount: 1000.0, transaction_type: Transaction::Type::Enum::DEPOSIT)
-          create(:transaction, sender: nil, receiver: user, amount: 100.0, transaction_type: Transaction::Type::Enum::WITHDRAWAL)
-          create(:transaction, sender: user, receiver: other_user, amount: 200.0, transaction_type: Transaction::Type::Enum::TRANSFER)
-          create(:transaction, sender: other_user, receiver: user, amount: 300.0, transaction_type: Transaction::Type::Enum::TRANSFER)
+          create(:transaction, sender: user, receiver: nil, amount: 100.0, transaction_type: Transaction::Type::Enum::WITHDRAWAL)
+          create(:transaction, sender: user, receiver: other_user, amount: 300.0, transaction_type: Transaction::Type::Enum::TRANSFER)
+          create(:transaction, sender: other_user, receiver: user, amount: 200.0, transaction_type: Transaction::Type::Enum::TRANSFER)
         end
 
         it 'returns the transaction history' do
@@ -231,13 +231,13 @@ RSpec.describe TransactionsController, type: :controller do
 
           # Check the second transaction (outgoing transfer)
           outgoing_transfer = json_response.find { |t| t['transaction_type'] == Transaction::Type::Enum::TRANSFER && t['transfer_type'] == Transaction::Transfer::Type::Enum::OUTGOING }
-          expect(outgoing_transfer['amount'].to_f).to eq(200.0)
+          expect(outgoing_transfer['amount'].to_f).to eq(300.0)
           expect(outgoing_transfer['recipient']['id']).to eq(other_user.id)
           expect(outgoing_transfer['recipient']['name']).to eq(other_user.name)
 
           # Check the third transaction (incoming transfer)
           incoming_transfer = json_response.find { |t| t['transaction_type'] == Transaction::Type::Enum::TRANSFER && t['transfer_type'] == Transaction::Transfer::Type::Enum::INCOMING }
-          expect(incoming_transfer['amount'].to_f).to eq(300.0)
+          expect(incoming_transfer['amount'].to_f).to eq(200.0)
           expect(incoming_transfer['recipient']['id']).to eq(other_user.id)
           expect(incoming_transfer['recipient']['name']).to eq(other_user.name)
         end

@@ -79,7 +79,7 @@ Run test
       - Contains transfer logic and transaction handling
 
 4. Review the Tests:
-   1. Run spec file using `bundle exec rspec`
+   1. Run spec file using the combined `bundle exec rspec`, or test separately by running `bundle  exec rspec <spec-file-path>` on the spec files below,
    2. Wallet Controller Spec ~ `spec/controllers/wallets_controller_spec.rb`
       - Contains quality test for functions within WalletsController, including validations, success response, and cache test
    3. Transaction Controller Spec ~ `spec/controllers/transactions_controller_spec.rb`
@@ -111,7 +111,7 @@ Run test
    - Reusability, if deposit, withdrawal, transfer were to be used elsewhere in the app.
    - Easier to test in isolation
 
-4. ActiveRecord Transactions with Locks on transactions operations
+4. ActiveRecord Transactions
    - Maintain data integrity, ensuring database operations either all succeed or all fail
    - Concurrency Control, prevent race conditions when multiple request try to update at the same time.
    - Due to the data sensitivity of money, this is highly important to utilize.

@@ -9,8 +9,8 @@ user2 = User.create!(name: 'Bob', email: 'bob@example.com')
 
 # Create Transactions
 Transaction.create!(sender: nil, receiver: user1, amount: 1000.0, transaction_type: 'deposit')
-Transaction.create!(sender: nil, receiver: user2, amount: 100.0, transaction_type: 'withdrawal')
-Transaction.create!(sender: user1, receiver: user2, amount: 200.0, transaction_type: 'transfer')
-Transaction.create!(sender: user2, receiver: user1, amount: 300.0, transaction_type: 'transfer')
+Transaction.create!(sender: user1, receiver: nil, amount: 100.0, transaction_type: 'withdrawal')
+Transaction.create!(sender: user1, receiver: user2, amount: 300.0, transaction_type: 'transfer')
+Transaction.create!(sender: user2, receiver: user1, amount: 200.0, transaction_type: 'transfer')
 
 puts 'Database seeded successfully!'
