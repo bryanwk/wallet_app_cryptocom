@@ -40,6 +40,22 @@ gem "thruster", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+gem 'redis'
+
+group :development, :test do
+  ### Testing
+  gem 'rspec-rails'
+  gem 'rspec-cells', '>= 0.3.10', require: false
+  gem "rails-controller-testing"
+  gem 'rspec-mocks'
+  gem 'rspec-its'
+  gem 'rspec-collection_matchers'
+  gem 'factory_bot_rails'
+  # Freeze the time for some tests
+  gem 'timecop'
+  gem 'database_cleaner'
+end
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
